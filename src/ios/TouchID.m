@@ -33,7 +33,7 @@
     
     self.laContext = [[LAContext alloc] init];
     
-    if ([self.laContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:nil]) {
+    if ([self.laContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthentication error:nil]) {
         NSString *biometryType = @"";
         if (@available(iOS 11.0, *)) {
             if (self.laContext.biometryType == LABiometryTypeFaceID) {
@@ -125,7 +125,7 @@
     BOOL hasLoginKey = [[NSUserDefaults standardUserDefaults] boolForKey:self.TAG];
     if(hasLoginKey){
         NSError * error;
-        BOOL touchIDAvailable = [self.laContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error];
+        BOOL touchIDAvailable = [self.laContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthentication error:&error];
 
         if(touchIDAvailable){
             [self.laContext evaluatePolicy:LAPolicyDeviceOwnerAuthentication localizedReason:message reply:^(BOOL success, NSError *error) {
