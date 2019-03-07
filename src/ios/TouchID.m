@@ -128,7 +128,7 @@
         BOOL touchIDAvailable = [self.laContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error];
 
         if(touchIDAvailable){
-            [self.laContext evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:message reply:^(BOOL success, NSError *error) {
+            [self.laContext evaluatePolicy:LAPolicyDeviceOwnerAuthentication localizedReason:message reply:^(BOOL success, NSError *error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
 
                 if(success){
